@@ -2,6 +2,8 @@ import pygame as pg
 
 size = (800, 800)
 screen = pg.display.set_mode(size)
+# Заголовок окна
+pg.display.set_caption('Координаты')
 
 small_rect = pg.Rect(0, 0, 60, 30)
 

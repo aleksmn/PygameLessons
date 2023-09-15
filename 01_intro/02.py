@@ -3,6 +3,8 @@ import pygame as pg
 # Размер окна
 size = (500, 500)
 screen = pg.display.set_mode(size)
+# Заголовок окна
+pg.display.set_caption('Рисуем фигуры')
 
 running = True
 while running:
