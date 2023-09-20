@@ -25,32 +25,33 @@ character_rect = character.get_rect(center = (size[0] // 2, size[1] // 2))
 pg.mixer.music.load("music.mp3")
 # Включаем воспроизведение
 pg.mixer.music.play()
-pg.mixer.music.set_volume(0.05)
+pg.mixer.music.set_volume(0.01)
 
 
 hello_sound = pg.mixer.Sound("hello.mp3")
-hello_sound.set_volume(0.9)
+hello_sound.set_volume(0.1)
 hello_sound.play()
-
-characterX_change = 0
 
 running = True
 while running:
     for event in pg.event.get():
+
         if event.type == pg.QUIT:
             running = False
 
-        if event.type == pg.KEYDOWN:
-            if event.key == pg.K_LEFT:
-                characterX_change = -1
-            if event.key == pg.K_RIGHT:
-                characterX_change = 1
+    # Непрерывное движение
+    keys = pg.key.get_pressed()
 
-        if event.type == pg.KEYUP:
-            if event.key == pg.K_LEFT or event.key == pg.K_RIGHT:
-                characterX_change = 0
+    if keys[pg.K_LEFT]:
+        character_rect.x -= 2
+    if keys[pg.K_RIGHT]:
+        character_rect.x += 2
 
-    character_rect.x += characterX_change
+    if keys[pg.K_UP]:
+        character_rect.y -= 2
+    if keys[pg.K_DOWN]:
+        character_rect.y += 2
+
     screen.blit(background, (0, 0))        
     screen.blit(character, character_rect)        
     
