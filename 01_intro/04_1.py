@@ -6,6 +6,10 @@ screen = pg.display.set_mode(size)
 # Заголовок окна
 pg.display.set_caption('Изображения и звук')
 
+# Добавляем иконку
+icon = pg.image.load('icon.png')
+pg.display.set_icon(icon)
+
 fps = 100
 clock = pg.time.Clock()
 
@@ -20,8 +24,8 @@ while running:
 
     screen.fill(pg.Color("cyan"))        
 
-    screen.blit(character, (0, 0))        
-    
+
+
 
     pg.display.flip()
     clock.tick(fps)
