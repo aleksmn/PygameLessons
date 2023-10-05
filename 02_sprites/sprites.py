@@ -12,12 +12,22 @@ class Character(pg.sprite.Sprite):
 
         self.rect.center = (250, 250)
 
+        self.direction = 'right'
+
     def update(self):
         keys = pg.key.get_pressed()
 
         if keys[pg.K_LEFT]:
+            if self.direction == "right":
+                self.image = pg.transform.flip(self.image, True, False)
+                self.direction = "left"
             self.rect.x -= 2
+
         if keys[pg.K_RIGHT]:
+            if self.direction == "left":
+                self.image = pg.transform.flip(self.image, True, False)
+                self.direction = "right"
+
             self.rect.x += 2
 
 
