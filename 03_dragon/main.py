@@ -107,10 +107,6 @@ while running:
     # Fill display to cover old images
     display_surface.fill((BLACK))
 
-    # Draw rectangles
-    # pygame.draw.rect(display_surface, RED, dragon_rect, 1)
-    # pygame.draw.rect(display_surface, RED, coin_rect, 1)
-
     # Blit image
     display_surface.blit(dragon.image, dragon.rect)
     display_surface.blit(coin.image, coin.rect)
