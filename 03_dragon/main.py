@@ -6,6 +6,7 @@ class Dragon(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self)
 
         self.image = pg.image.load("images/dragon.png")
+        self.image = pg.transform.scale(self.image, (80, 80))
         self.rect = self.image.get_rect()
         self.rect.topleft = (25, 25)
 
@@ -37,7 +38,7 @@ class Coin(pg.sprite.Sprite):
 
         self.image = pg.image.load("images/coin.png")
         self.rect = self.image.get_rect()
-        self.rect.center = (WINDOW_WIDTH//2, WINDOW_HIGHT//2)
+        self.rect.topleft = (25, 25)
 
 #Initialize pg
 pg.init()
