@@ -17,19 +17,19 @@ class Dragon(pg.sprite.Sprite):
         keys = pg.key.get_pressed()
 
         # Move the dragon continuously
-        if (keys[pg.K_LEFT] or keys[pg.K_a]) and self.rect.left > 0:
+        if keys[pg.K_LEFT] and self.rect.left > 0:
             if self.direction == "right":
                 self.image = pg.transform.flip(self.image, True, False)
                 self.direction = "left"
             self.rect.x -= VELOCITY
-        if (keys[pg.K_RIGHT] or keys[pg.K_d]) and self.rect.right < WINDOW_WIDTH:
+        if keys[pg.K_RIGHT] and self.rect.right < WINDOW_WIDTH:
             if self.direction == "left":
                 self.image = pg.transform.flip(self.image, True, False)
                 self.direction = "right"
             self.rect.x += VELOCITY
-        if (keys[pg.K_UP] or keys[pg.K_w]) and self.rect.top > 0:
+        if keys[pg.K_UP] and self.rect.top > 0:
             self.rect.y -= VELOCITY
-        if (keys[pg.K_DOWN] or keys[pg.K_s]) and self.rect.bottom < WINDOW_HIGHT:
+        if keys[pg.K_DOWN] and self.rect.bottom < WINDOW_HIGHT:
             self.rect.y += VELOCITY
 
 class Coin(pg.sprite.Sprite):
