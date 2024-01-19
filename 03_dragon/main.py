@@ -38,7 +38,7 @@ class Coin(pg.sprite.Sprite):
 
         self.image = pg.image.load("images/coin.png")
         self.rect = self.image.get_rect()
-        self.rect.topleft = (25, 25)
+        self.rect.center = (WINDOW_WIDTH//2, WINDOW_HIGHT//2)
 
 #Initialize pg
 pg.init()
