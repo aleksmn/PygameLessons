@@ -78,8 +78,7 @@ VELOCITY = 5
 score = 0
 
 # Font
-font = pg.font.Font("fonts/AttackGraffiti.ttf", 22)
-
+font = pg.font.Font("fonts/PlaypenSans.ttf", 26)
 
 
 
@@ -98,7 +97,6 @@ while running:
 
     # Check for collision between two rects
     if dragon.rect.colliderect(coin.rect):
-        # print("Collision!!!")
         score += 1
         sound_1.play()
         coin.rect.left = random.randint(0, WINDOW_WIDTH - coin.rect.w)
