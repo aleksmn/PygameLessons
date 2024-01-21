@@ -15,6 +15,7 @@ screen = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pg.display.set_caption('Bounce at 60 FPS!')
 
 ball = pg.image.load("ball.png")
+ball = pg.transform.scale(ball, (100, 100))
 ballrect = ball.get_rect()
 
 # The main game loop
@@ -23,6 +24,7 @@ while running:
     for event in pg.event.get():
         if event.type == pg.QUIT:
             running = False
+
 
     ballrect = ballrect.move(SPEED)
 
