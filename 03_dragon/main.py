@@ -46,7 +46,7 @@ pg.init()
 # Create a display surface
 WINDOW_WIDTH = 600
 WINDOW_HIGHT = 300
-display_surface = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HIGHT))
+screen = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HIGHT))
 pg.display.set_caption('Hungry Dragon!')
 
 
@@ -104,15 +104,15 @@ while running:
 
         
     # Fill display to cover old images
-    display_surface.fill((BLACK))
+    screen.fill((BLACK))
 
     # Blit image
-    display_surface.blit(dragon.image, dragon.rect)
-    display_surface.blit(coin.image, coin.rect)
+    screen.blit(dragon.image, dragon.rect)
+    screen.blit(coin.image, coin.rect)
 
     # Update score
     score_text = font.render(str(score), True, RED)
-    display_surface.blit(score_text, (10, 10))
+    screen.blit(score_text, (10, 10))
  
     # Update the display
     pg.display.update()
