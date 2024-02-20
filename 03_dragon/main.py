@@ -40,62 +40,60 @@ class Coin(pg.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (WINDOW_WIDTH//2, WINDOW_HIGHT//2)
 
-#Initialize pg
+#Инициализируем pygame
 pg.init()
 
-# Create a display surface
+# Создаем игровой дисплей
 WINDOW_WIDTH = 600
 WINDOW_HIGHT = 300
 screen = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HIGHT))
 pg.display.set_caption('Hungry Dragon!')
 
 
-# Set FPS and clock
+# Устнавливаем FPS
 FPS = 60
 clock = pg.time.Clock()
 
-# Define colors
+# Объявляем цвета
 BLACK = (0, 0, 0)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 
-# Load sound effects
+# Звуки
 sound_1 = pg.mixer.Sound('sounds/sound_1.wav')
 sound_1.set_volume(0.1)
 
-# Load background music
+# Фоновая музыка
 pg.mixer.music.load('sounds/music.wav')
 
-
-# Play background music
+# Запуск музыки
 pg.mixer.music.set_volume(0.1)
 pg.mixer.music.play(-1, 0.0)
 
 
-# Set game values
+# Скорость движения
 VELOCITY = 5
-
+# Очки
 score = 0
 
-# Font
+# Шрифт
 font = pg.font.Font("fonts/PlaypenSans.ttf", 26)
 
 
-
+# Создаем объекты
 dragon = Dragon()
 coin = Coin()
 
-# The main game loop
+# Игровой цикл
 running = True
 while running:
     for event in pg.event.get():
-        # print(event)
         if event.type == pg.QUIT:
             running = False
 
     dragon.update()
 
-    # Check for collision between two rects
+    # Проверяем столкновения
     if dragon.rect.colliderect(coin.rect):
         score += 1
         sound_1.play()
@@ -103,22 +101,21 @@ while running:
         coin.rect.top = random.randint(0, WINDOW_HIGHT - coin.rect.h)
 
         
-    # Fill display to cover old images
+    # Заливка экрана
     screen.fill((BLACK))
 
-    # Blit image
+    # Отрисовка спрайтов
     screen.blit(dragon.image, dragon.rect)
     screen.blit(coin.image, coin.rect)
 
-    # Update score
+    # Отрисовка счета
     score_text = font.render(str(score), True, RED)
     screen.blit(score_text, (10, 10))
  
-    # Update the display
+    # Обновляем экран
     pg.display.update()
 
-    # Tick the clock 
     clock.tick(FPS)
 
-# End the game
+# Выход из игры
 pg.quit()
