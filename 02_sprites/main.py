@@ -19,9 +19,9 @@ background = pg.image.load("images/background.png")
 background = pg.transform.scale(background, size)
 
 character = Character()
-
+# Создаем группу спрайтов
 butterflies = pg.sprite.Group()
-
+# Добавляем спрайты в группу
 for _ in range(5):
     butterflies.add(Butterfly())
 
