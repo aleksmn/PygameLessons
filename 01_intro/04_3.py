@@ -19,10 +19,6 @@ character = pg.image.load("Character.png")
 character_size = (250, 427)
 character = pg.transform.scale(character, character_size)
 
-character2 = pg.transform.flip(character, True, False)
-character2_rect = character2.get_rect(center = (size[0] // 2, size[1] // 2))
-
-
 # Загружаем звуковой файл
 pg.mixer.music.load("music.mp3")
 # Включаем воспроизведение
@@ -30,9 +26,9 @@ pg.mixer.music.play()
 pg.mixer.music.set_volume(0.05)
 
 
-hello_sound = pg.mixer.Sound("hello.mp3")
-hello_sound.set_volume(0.9)
-hello_sound.play()
+# hello_sound = pg.mixer.Sound("hello.mp3")
+# hello_sound.set_volume(0.9)
+# hello_sound.play()
 
 running = True
 while running:
@@ -45,8 +41,7 @@ while running:
     screen.blit(background, (0, 0))        
 
     screen.blit(character, (0, size[1] - character_size[1]))        
-
-    screen.blit(character2, character2_rect)        
+  
     
     pg.display.flip()
     clock.tick(fps)
