@@ -26,10 +26,6 @@ pg.mixer.music.play()
 pg.mixer.music.set_volume(0.05)
 
 
-# hello_sound = pg.mixer.Sound("hello.mp3")
-# hello_sound.set_volume(0.9)
-# hello_sound.play()
-
 running = True
 while running:
     for event in pg.event.get():
