@@ -49,8 +49,11 @@ while running:
     if small_rect.right == size[0]:
         direction = "left"        
     if small_rect.left == 0:
-        direction = "right"        
-
+        direction = "right"
+    if small_rect.top == 0:
+        direction = "down"
+    if small_rect.bottom == size[0]:
+        direction = "up"  
 
 
     if direction == "right":
