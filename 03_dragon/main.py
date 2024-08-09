@@ -1,6 +1,10 @@
 import pygame as pg
 import random
 
+# запаковка в exe
+# auto-py-to-exe
+
+
 class Dragon(pg.sprite.Sprite):
     def __init__(self):
         pg.sprite.Sprite.__init__(self)
@@ -40,8 +44,12 @@ class Coin(pg.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (WINDOW_WIDTH//2, WINDOW_HIGHT//2)
 
-#Инициализируем pygame
+# Инициализируем pygame
 pg.init()
+
+# Иконка
+icon = pg.image.load('images/dragon.png')
+pg.display.set_icon(icon)
 
 # Создаем игровой дисплей
 WINDOW_WIDTH = 600
@@ -61,6 +69,7 @@ RED = (255, 0, 0)
 
 # Звуки
 sound_1 = pg.mixer.Sound('sounds/sound_1.wav')
+# mixkit.com
 sound_1.set_volume(0.1)
 
 # Фоновая музыка
@@ -93,14 +102,14 @@ while running:
 
     dragon.update()
 
-    # Проверяем столкновения
+    # Проверяем столкновения (коллизии) двух спрайтов
     if dragon.rect.colliderect(coin.rect):
         score += 1
         sound_1.play()
         coin.rect.left = random.randint(0, WINDOW_WIDTH - coin.rect.w)
         coin.rect.top = random.randint(0, WINDOW_HIGHT - coin.rect.h)
 
-        
+
     # Заливка экрана
     screen.fill((BLACK))
 
