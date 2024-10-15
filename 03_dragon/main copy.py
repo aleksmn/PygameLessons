@@ -2,45 +2,15 @@ import pygame as pg
 import random
 
 
-
-class Dragon(pg.sprite.Sprite):
-    def __init__(self):
-        pg.sprite.Sprite.__init__(self)
-
-        self.image = pg.image.load("images/dragon.png")
-        self.image = pg.transform.scale(self.image, (80, 80))
-
-        # self.image = pg.transform.flip(self.image, True, False)
-
-        self.rect = self.image.get_rect()
-        self.rect.topleft = (25, 25)
-
-        self.direction = 'right'
-
-
-    def update(self):
-        # Get a list of all keys pressed down
-        keys = pg.key.get_pressed()
-
-        if keys[pg.K_LEFT]:
-            self.rect.x -= VELOCITY
-
-        if keys[pg.K_RIGHT]:
-            self.rect.x += VELOCITY
-
-
-
-
-#Инициализируем pygame
+# Инициализируем pygame
 pg.init()
 
 # Создаем игровой дисплей
-WINDOW_WIDTH = 600
-WINDOW_HIGHT = 300
+WINDOW_WIDTH = 800
+WINDOW_HIGHT = 600
 screen = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HIGHT))
 pg.display.set_caption('Hungry Dragon!')
 
-VELOCITY = 5
 
 # Устнавливаем FPS
 FPS = 60
@@ -52,14 +22,10 @@ GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 
 
-
+# Скорость движения
+VELOCITY = 5
 # Очки
 score = 0
-
-# Создаем объекты
-dragon = Dragon()
-
-
 
 
 # Игровой цикл
@@ -71,11 +37,7 @@ while running:
 
 
     # Заливка экрана
-    screen.fill((BLACK))
-
-
-    # Отрисовка спрайтов
-    screen.blit(dragon.image, dragon.rect)
+    screen.fill("orange")
 
 
 
