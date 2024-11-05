@@ -2,12 +2,26 @@ import pygame as pg
 import random
 
 
+class Dragon(pg.sprite.Sprite):
+    def __init__(self):
+        pg.sprite.Sprite.__init__(self)
+
+        self.image = pg.image.load("images/dragon.png")
+        # меняем размер
+        self.image = pg.transform.scale(self.image, (80, 80))
+        # Расположение спрайта 
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (25, 25)
+
+
+
 # Инициализируем pygame
 pg.init()
 
+
 # Создаем игровой дисплей
-WINDOW_WIDTH = 800
-WINDOW_HIGHT = 600
+WINDOW_WIDTH = 600
+WINDOW_HIGHT = 300
 screen = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HIGHT))
 pg.display.set_caption('Hungry Dragon!')
 
@@ -16,16 +30,15 @@ pg.display.set_caption('Hungry Dragon!')
 FPS = 60
 clock = pg.time.Clock()
 
-# Объявляем цвета
-BLACK = (0, 0, 0)
-GREEN = (0, 255, 0)
-RED = (255, 0, 0)
+
+# Создаем фон
+background = pg.image.load("images/background.jpg")
+# Меняем размер картинки
+background = pg.transform.scale(background, (WINDOW_WIDTH, WINDOW_HIGHT))
 
 
-# Скорость движения
-VELOCITY = 5
-# Очки
-score = 0
+# Создаем объекты
+dragon = Dragon()
 
 
 # Игровой цикл
@@ -36,13 +49,16 @@ while running:
             running = False
 
 
-    # Заливка экрана
-    screen.fill("orange")
+    # Отрисовка фона
+    screen.blit(background, (0, 0))
 
+    # Отрисовка спрайтов
+    screen.blit(dragon.image, dragon.rect)
 
 
     # Обновляем экран
     pg.display.update()
+
     clock.tick(FPS)
 
 # Выход из игры
