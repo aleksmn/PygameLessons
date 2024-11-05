@@ -18,10 +18,11 @@ class Dragon(pg.sprite.Sprite):
 
         self.image = pg.image.load("images/dragon.png")
         self.image = pg.transform.scale(self.image, (80, 80))
+        self.image = pg.transform.flip(self.image, True, False)
         self.rect = self.image.get_rect()
         self.rect.topleft = (25, 25)
 
-        self.direction = 'left'
+        self.direction = 'right'
 
     def update(self):
         # Get a list of all keys pressed down
@@ -60,7 +61,7 @@ pg.display.set_icon(icon)
 
 # Создаем игровой дисплей
 WINDOW_WIDTH = 600
-WINDOW_HIGHT = 600
+WINDOW_HIGHT = 300
 screen = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HIGHT))
 pg.display.set_caption('Hungry Dragon!')
 
@@ -73,10 +74,6 @@ background = pg.transform.scale(background, (WINDOW_WIDTH, WINDOW_HIGHT))
 FPS = 60
 clock = pg.time.Clock()
 
-# Объявляем цвета
-BLACK = (0, 0, 0)
-GREEN = (0, 255, 0)
-RED = (255, 0, 0)
 
 # Звуки
 sound_1 = pg.mixer.Sound('sounds/sound_1.wav')
@@ -121,8 +118,7 @@ while running:
         coin.rect.top = random.randint(0, WINDOW_HIGHT - coin.rect.h)
 
 
-    # Заливка экрана
-    screen.fill((BLACK))
+    # Фон
     screen.blit(background, (0, 0))  
 
     # Отрисовка спрайтов
@@ -130,7 +126,7 @@ while running:
     screen.blit(coin.image, coin.rect)
 
     # Отрисовка счета
-    score_text = font.render(str(score), True, RED)
+    score_text = font.render(str(score), True, "red")
     screen.blit(score_text, (10, 10))
  
     # Обновляем экран
