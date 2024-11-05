@@ -1,6 +1,13 @@
 import pygame as pg
 import random
 
+# Картинки:
+#iconarchive.com
+
+# Музыка и звуки
+# mixkit.co
+
+
 # запаковка в exe
 # auto-py-to-exe
 
@@ -14,7 +21,7 @@ class Dragon(pg.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.topleft = (25, 25)
 
-        self.direction = 'right'
+        self.direction = 'left'
 
     def update(self):
         # Get a list of all keys pressed down
@@ -58,6 +65,10 @@ screen = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HIGHT))
 pg.display.set_caption('Hungry Dragon!')
 
 
+background = pg.image.load("images/background.jpg")
+background = pg.transform.scale(background, (WINDOW_WIDTH, WINDOW_HIGHT))
+
+
 # Устнавливаем FPS
 FPS = 60
 clock = pg.time.Clock()
@@ -86,7 +97,7 @@ VELOCITY = 5
 score = 0
 
 # Шрифт
-font = pg.font.Font("fonts/PlaypenSans.ttf", 26)
+font = pg.font.Font(None, 40)
 
 
 # Создаем объекты
@@ -112,6 +123,7 @@ while running:
 
     # Заливка экрана
     screen.fill((BLACK))
+    screen.blit(background, (0, 0))  
 
     # Отрисовка спрайтов
     screen.blit(dragon.image, dragon.rect)
