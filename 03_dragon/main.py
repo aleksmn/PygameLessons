@@ -25,10 +25,9 @@ class Dragon(pg.sprite.Sprite):
         self.direction = 'right'
 
     def update(self):
-        # Get a list of all keys pressed down
+        # Список всех нажатых кнопок
         keys = pg.key.get_pressed()
-
-        # Move the dragon continuously
+        
         if keys[pg.K_LEFT] and self.rect.left > 0:
             if self.direction == "right":
                 self.image = pg.transform.flip(self.image, True, False)
