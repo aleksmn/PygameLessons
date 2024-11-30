@@ -60,7 +60,7 @@ pg.display.set_icon(icon)
 
 # Создаем игровой дисплей
 WINDOW_WIDTH = 600
-WINDOW_HIGHT = 300
+WINDOW_HIGHT = 375
 screen = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HIGHT))
 pg.display.set_caption('Hungry Dragon!')
 
