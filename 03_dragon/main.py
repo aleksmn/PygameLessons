@@ -100,6 +100,9 @@ font = pg.font.Font(None, 40)
 dragon = Dragon()
 coin = Coin()
 
+frames = 0
+
+
 # Игровой цикл
 running = True
 while running:
@@ -117,6 +120,10 @@ while running:
         coin.rect.top = random.randint(0, WINDOW_HIGHT - coin.rect.h)
 
 
+
+
+
+
     # Фон
     screen.blit(background, (0, 0))  
 
@@ -127,6 +134,13 @@ while running:
     # Отрисовка счета
     score_text = font.render(str(score), True, "red")
     screen.blit(score_text, (10, 10))
+
+    # Таймер
+    frames += 1
+    timer = 60 - frames//FPS
+
+    timer_text = font.render(str(timer), True, "white")
+    screen.blit(timer_text, (WINDOW_WIDTH-40, 10))
  
     # Обновляем экран
     pg.display.update()
