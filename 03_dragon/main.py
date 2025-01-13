@@ -141,11 +141,11 @@ while running:
 
     timer_text = font.render(str(timer), True, "white")
     screen.blit(timer_text, (WINDOW_WIDTH-40, 10))
- 
-    # Обновляем экран
-    pg.display.update()
-
-    clock.tick(FPS)
+    
+    if timer >= 0:
+        # Обновляем экран
+        pg.display.update()
+        clock.tick(FPS)
 
 # Выход из игры
 pg.quit()
