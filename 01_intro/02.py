@@ -7,8 +7,6 @@ size = (500, 500)
 # Окно
 screen = pg.display.set_mode(size)
 
-# Цвета
-my_colors = ["#ff00ff", "#00ff00", "#0000ff", "#ff0000"]
 
 # Количество кадров секунду
 fps = 60
@@ -24,10 +22,10 @@ while running:
         if event.type == pg.QUIT:
             running = False
 
-    screen.fill(my_colors[0])
+    screen.fill("orange")
 
     # Создадим прямоугольник
-    pg.draw.rect(screen, my_colors[1], (100, 200, 80, 120))
+    pg.draw.rect(screen, "cyan", (100, 200, 80, 120))
 
 
 
