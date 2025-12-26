@@ -7,38 +7,50 @@ class Dragon(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self)
 
         self.image = pg.image.load("images/dragon.png")
-        # меняем размер
         self.image = pg.transform.scale(self.image, (80, 80))
-        # Расположение спрайта 
+        self.image = pg.transform.flip(self.image, True, False)
         self.rect = self.image.get_rect()
         self.rect.topleft = (25, 25)
 
+        self.direction = 'right'
+
+    def update(self):
+        # Список всех нажатых кнопок
+        keys = pg.key.get_pressed()
+        
+        if keys[pg.K_LEFT] and self.rect.left > 0:
+            if self.direction == "right":
+                self.image = pg.transform.flip(self.image, True, False)
+                self.direction = "left"
+            self.rect.x -= 5
+        if keys[pg.K_RIGHT] and self.rect.right < WINDOW_WIDTH:
+            if self.direction == "left":
+                self.image = pg.transform.flip(self.image, True, False)
+                self.direction = "right"
+            self.rect.x += 5
+        if keys[pg.K_UP] and self.rect.top > 0:
+            self.rect.y -= 5
+        if keys[pg.K_DOWN] and self.rect.bottom < WINDOW_HIGHT:
+            self.rect.y += 5
 
 
 # Инициализируем pygame
 pg.init()
 
-
 # Создаем игровой дисплей
 WINDOW_WIDTH = 600
-WINDOW_HIGHT = 300
+WINDOW_HIGHT = 375
+
 screen = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HIGHT))
 pg.display.set_caption('Hungry Dragon!')
 
-
-# Устнавливаем FPS
 FPS = 60
 clock = pg.time.Clock()
 
 
-# Создаем фон
-background = pg.image.load("images/background.jpg")
-# Меняем размер картинки
-background = pg.transform.scale(background, (WINDOW_WIDTH, WINDOW_HIGHT))
-
-
 # Создаем объекты
 dragon = Dragon()
+
 
 
 # Игровой цикл
@@ -49,17 +61,14 @@ while running:
             running = False
 
 
-    # Отрисовка фона
-    screen.blit(background, (0, 0))
+    dragon.update()
+
+    # Фон
+    screen.fill("black")
 
     # Отрисовка спрайтов
     screen.blit(dragon.image, dragon.rect)
 
-
     # Обновляем экран
     pg.display.update()
-
     clock.tick(FPS)
-
-# Выход из игры
-pg.quit()
